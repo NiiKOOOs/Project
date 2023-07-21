@@ -1,0 +1,25 @@
+import deep_translator
+from deep_translator import MyMemoryTranslator
+
+def english_to_french(text):
+    """Translates text from English to French."""
+    return MyMemoryTranslator(source_language="en", target_language="fr").translate(text)
+
+def french_to_english(text):
+    """Translates text from French to English."""
+    return MyMemoryTranslator(source_language="fr", target_language="en").translate(text)
+
+def test_english_to_french():
+    """Tests the english_to_french function."""
+    assert english_to_french("Hello, world!") == "Bonjour, le monde!"
+    assert english_to_french("Goodbye, world!") == "Au revoir, le monde!"
+
+def test_french_to_english():
+    """Tests the french_to_english function."""
+    assert french_to_english("Bonjour, le monde!") == "Hello, world!"
+    assert french_to_english("Au revoir, le monde!") == "Goodbye, world!"
+
+if __name__ == "__main__":
+    test_english_to_french()
+    test_french_to_english()
+
