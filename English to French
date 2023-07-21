@@ -1,0 +1,22 @@
+import flask
+from flask import request
+import deep_translator
+
+app = flask.Flask(__name__)
+
+@app.route("/")
+def index():
+    return "Hello, world!"
+
+@app.route("/translate", methods=["POST"])
+def translate():
+    text = request.json["text"]
+    source_language = request.json["source_language"]
+    target_language = request.json["target_language"]
+
+    translated_text = deep_translator.translate(text, source_language, target_language)
+
+    return {"translated_text": translated_text}
+
+if __name__ == "__main__":
+    app.run(debug=True)
